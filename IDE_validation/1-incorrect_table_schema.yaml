@@ -1,0 +1,17 @@
+name: border_times
+schema: my_company
+disabled: false
+replication:
+    strategy: cnangeset
+table_size: small
+source:
+    type: script
+    commands: 
+        params:
+            url: https://granica.gov.pl/...
+            xpath: //*[@id="content"]/table[2]/tbody/tr[4]/td[9]
+fields:
+  - name: time_hours
+    type: varchar
+    size: 45
+

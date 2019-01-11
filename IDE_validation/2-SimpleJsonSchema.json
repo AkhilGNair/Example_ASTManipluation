@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "schema": {
+            "type": "string",
+            "default": "my_company"
+        },
+        "description": {
+            "type": "string"
+        },
+        "table_size": {
+            "type": "string",
+            "default": "SMALL",
+            "enum": [
+                "SMALL",
+                "..."
+            ]
+        },
+        "disabled": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "required": [
+        "name",
+        "source"
+    ],
+    "additionalProperties": false
+}

@@ -1,0 +1,136 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "cmd": {
+            "properties": {
+                "cmd": {
+                    "type": "string"
+                },
+                "params": {
+                    "type": "object"
+                }
+            },
+            "required": [
+                "cmd"
+            ],
+            "type": "object"
+        },
+        "field": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "disabled": {
+                    "type": "boolean"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "access": {
+                    "type": "string",
+                    "enum": [
+                        "public",
+                        "private"
+                    ],
+                    "default": "public"
+                }
+            },
+            "required": [
+                "name",
+                "type"
+            ],
+            "type": "object"
+        },
+        "source": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "script",
+                        "sql"
+                    ],
+                    "default": "sql"
+                },
+                "connection": {
+                    "type": "string"
+                },
+                "table": {
+                    "type": "string",
+                    "description": "Table name or select expression"
+                },
+                "commands": {
+                    "type": "array",
+                    "description": "Should be an array of objects with keys cmd and params",
+                    "items": {
+                        "$ref": "#/definitions/cmd"
+                    }
+                },
+                "format": {
+                    "type": "string",
+                    "enum": [
+                        "tsv",
+                        "json"
+                    ],
+                    "default": "tsv",
+                    "description": "Specify the output format of the script"
+                }
+            },
+            "required": [],
+            "type": "object"
+        }
+    },
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "schema": {
+            "type": "string",
+            "default": "my_company"
+        },
+        "disabled": {
+            "type": "boolean",
+            "default": "false"
+        },
+        "replication": {
+            "type": "object",
+            "properties": {
+                "strategy": {
+                    "type": "string",
+                    "enum": [
+                        "dump",
+                        "changeset"
+                    ]
+                }
+            }
+        },
+        "table_size": {
+            "type": "string",
+            "enum": [
+                "SMALL",
+                "MEDIUM",
+                "HUGE"
+            ]
+        },
+        "source": {
+            "type": "object",
+            "$ref": "#definitions/source"
+        },
+        "fields": {
+            "type": "array",
+            "items": {
+                "$ref": "#definitions/field"
+            }
+        }
+    },
+    "required": [
+        "name",
+        "source"
+    ],
+    "additionalProperties": false
+}
