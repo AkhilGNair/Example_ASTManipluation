@@ -1,0 +1,5 @@
+astor==0.7.1
+lenses==0.5.0
+PyYAML==3.13
+singledispatch==3.4.0.3
+six==1.12.0
