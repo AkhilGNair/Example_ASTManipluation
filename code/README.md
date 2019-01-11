@@ -57,4 +57,4 @@ class Klass:
         return f'My props are {p}'
 ```
 
-If, like me, when you use a `for` loop in python to indent code you lose, check out `src/alter-lenses.py` where the same results are achieved in using a functional library.
+If, like me, when you use a `for` loop in python to indent code you lose, check out `src/alter-lenses.py` where the same results are achieved using a functional library.
